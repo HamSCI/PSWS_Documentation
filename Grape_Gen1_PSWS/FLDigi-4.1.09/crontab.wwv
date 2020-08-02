@@ -1,0 +1,11 @@
+sudo crontab -u root -e
+# Keep the DHCP IP address active by pinging the router once a hour 
+# IP address should be your GATEWAY address on your network
+03 * * * * ping 170.85.170.254 -c 1 > /dev/null
+
+
+
+sudo crontab -u pi -e
+
+# Daily processing and plotting of WWV file after file write at 00:00 UTC. Store results (and errors) to wwvcron0 every day
+00 00 * * * export DISPLAY=:0 && python3 /home/pi/WWVdata/WWVPython/WWV_autoplt.py >/home/pi/WWVdata/temp/wwvcron0 2>&1
