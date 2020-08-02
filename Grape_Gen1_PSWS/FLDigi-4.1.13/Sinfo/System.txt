@@ -1,0 +1,1 @@
+RasPi4B w/4GB, Raspian OS, FLDigi 4.1.13 (N8OBJ mods)
