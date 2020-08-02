@@ -5,3 +5,8 @@ This documentation is licensed with the Attribution-ShareAlike 4.0 International
 
 ## First releaase - FLDIGI-4.1.09
 - Basee on a modified version of FLDIGI-4.1.09
+- File structure based oof of /home/pi/WWVdata/...
+
+##Second release - FLDIGI-4.4=1.13
+- based on modified version of FLDIGI 4.1.13
+- file structure based off of /home/pi/PSWS/...
