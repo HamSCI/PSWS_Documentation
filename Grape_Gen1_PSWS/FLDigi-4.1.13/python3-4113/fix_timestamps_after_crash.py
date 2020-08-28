@@ -143,6 +143,7 @@ def _increment_timestamp(line, timedelta):
         print(
             f"{bytes(line, encoding='utf-8')} -> {bytes(out, encoding='utf-8')}"
         )  # TODO drop newlines?
+
     return out
 
 
@@ -177,7 +178,8 @@ def main(infilepath, outfilepath):
         results = _find_time_delta_backwards(infile)
 
         if not results["has_error"]:
-            raise Exception("Timestamp errors were expected but none" " were found")
+            print("No timestamp errors were found")
+            return  # success
 
         error_position = results["error_position"]
 

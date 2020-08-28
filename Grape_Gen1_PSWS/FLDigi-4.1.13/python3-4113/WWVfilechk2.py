@@ -77,7 +77,7 @@ FileChk = 'analysis' + yestrdate + '.csv' #filename format
 
 # Force a file for debug
 
-#FileChk='analysis200810.csv'  # newest format
+#FileChk='analysis200710.csv'  # newest format
 
 # if using above line, comment out 3 lines in next section
 #-------------------------------------------------
@@ -189,7 +189,7 @@ if badfile == 1 :
 #      TempFile=(TempDir + FileBadTime) #with fixed with full path
 
 ### resequencing code goes here
-    print("Adjusting timestamps - parsing for space/time continuum flaws")
+    print("Adjusting timestamps - parsing for space/time continuim flaws")
     # Aidan's magical timestamp sequence fix code
     fix_timestamps_after_crash.fix_and_write_back(TempFile)
 
