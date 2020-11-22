@@ -4,6 +4,7 @@
 Created on Mon July 1 2020
 Full Beacon (WWV / CHU) plotting of 2 input fomats
 added hours ticks, removed time from UTC dat in header, added zero ref line for doppler freq shift, Elv now Elev  7-31=20 JCG
+added autoplot capability 11/21/20 jgibbons
 @authors dkazdan jgibbons
 """
 
@@ -40,6 +41,10 @@ PlotDIR = homepath + 'Splot/'
 
 InfoDir = homepath + 'Sinfo/'
 #print('InfoDir = ' + InfoDir)
+
+autoplotfile = homepath + 'Scmd/autoplot'
+#print('AutoPlot file path = ' + autoplotfile)
+
 
 #-------------------------------------------------
 #-------------------------------------------------
@@ -78,7 +83,7 @@ TEMPFILE='analysis' + Olddate + '.csv' #filename format
 #-------------------------------------------------
 #-------------------------------------------------
 # This is a MANUAL FORCED OVERRIDE find of the file to be graphed
-#TEMPFILE='analysis200729.csv'  # newest format with full ISO timestamp - force file
+TEMPFILE='analysis200729.csv'  # newest format with full ISO timestamp - force file
 
 #-------------------------------------------------
 #-------------------------------------------------
@@ -453,6 +458,15 @@ plt.savefig(PlotDIR + yesterdaystr + '_' + node + '_' +  GridSqr + '_' +  RadioI
 
 print('Plot File: ' + graph_file + '\n')  # indicate plot file name for crontab printout
 
-subprocess.call('gpicview ' + graph_file +' &', shell=True)   #create shell and plot the data from graph file
+#-------------------------------------------------------------------
+# Check to see if the autoplot file exists; if not, skip the plot
+if (path.exists(autoplotfile)):
+    print('autoplot enable File found - Processing Plot...\n')
+    subprocess.call('gpicview ' + graph_file +' &', shell=True)   #create shell and plot the data from graph file
+else:
+    print('No autoplot enable File found - exiting')
+#-----------------------------------------------
+
+#subprocess.call('gpicview ' + graph_file +' &', shell=True)   #create shell and plot the data from graph file
 
 print('Exiting python combined processing program gracefully')
