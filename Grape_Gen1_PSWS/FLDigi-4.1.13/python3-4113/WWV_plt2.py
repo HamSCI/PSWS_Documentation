@@ -83,7 +83,7 @@ TEMPFILE='analysis' + Olddate + '.csv' #filename format
 #-------------------------------------------------
 #-------------------------------------------------
 # This is a MANUAL FORCED OVERRIDE find of the file to be graphed
-TEMPFILE='analysis200729.csv'  # newest format with full ISO timestamp - force file
+#TEMPFILE='analysis200729.csv'  # newest format with full ISO timestamp - force file
 
 #-------------------------------------------------
 #-------------------------------------------------
