@@ -10,3 +10,4 @@ This documentation is licensed with the Attribution-ShareAlike 4.0 International
 ## Second release - FLDIGI-4.1.13
 - based on modified version of FLDIGI 4.1.13
 - file structure based off of /home/pi/PSWS/...
+- bashrc (stored as .bashrc in home directory) added with new aliases
