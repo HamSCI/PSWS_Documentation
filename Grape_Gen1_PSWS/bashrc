@@ -128,7 +128,7 @@ alias h='head -n 40 $1'
 alias t='tail -n 40 $1'
 alias apon='touch ~/PSWS/Scmd/autoplot'
 alias apoff='rm ~/PSWS/Scmd/autoplot'
-alias PSWSsetup='python3 /home/pi/PSWS/Scode/PSWSsetup.py'
+alias PSWSsetup='python3 /home/pi/PSWSsetup.py'
 
 #Leo Bodnar Linux Utils
 alias lbs='sudo /home/pi/lbgpsdo/lb-gps-linux-status /dev/hidraw1'
