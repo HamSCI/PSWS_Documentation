@@ -9,5 +9,10 @@
 - Latest version is copy of last version and is placed in home directory of PSWS station 
 - This is normally /home/pi
 - Entire directory structure is based off of path /home/pi/PSWS/
-- Subdirectories include /Srawdata, /Sdata, /Sinfo, /Sstat, /Scode, /Splot, /Scmd. /Stemp  
+- Subdirectories include /Srawdata, /Sdata, /Sinfo, /Sstat, /Scode, /Splot, /Scmd. /Stemp
+- You will most liekly need to install the python pkg maidenhead to get this script to run. 
+- Do this:
+-  > pip install maidenhead (for Python2.7) 
+-  or
+-  > pip3 install maidenhead (for python3.7+)
 
