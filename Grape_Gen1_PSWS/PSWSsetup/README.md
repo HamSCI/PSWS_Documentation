@@ -3,7 +3,7 @@
 
 - This documentation is licensed with the Attribution-ShareAlike 4.0 International license https://creativecommons.org/licenses/by-sa/4.0/legalcode.
 
-## PSWSsetup program for initializing the file directory structure and then filling in the Node's metadata
+## "PSWSsetup.py" program for initializing the file directory structure and then filling in the Node's metadata
 
 - Versions are shown with V#_## in the filename
 - Latest version is copy of last version and is placed in home directory of PSWS station 
@@ -16,3 +16,9 @@
 -  or
 -  > pip3 install maidenhead (for python3.7+)
 
+## "PSWSinfo.py" program for reading in the Node's metadata and outputting it to a file
+
+- Versions are shown with V#_## in the filename
+- Latest version is copy of last version and is placed in home directory of PSWS station
+- This is normally /home/pi
+- This is a copy of the Header info that is presnt at the beginning of each day's file
