@@ -1,0 +1,37 @@
+﻿
+Grape Gen 1 PSWS Frequency Change Procedure
+by N8OBJ  1-4-2021
+
+Background: 
+
+The Grape Gen 1 PSWS is a proof-of-concept prototype and as such has limitations that the Gen 2 Grape PSWS will not have. The system was put together with readily available components to allow verification that the single stage mixer concept could receive and measure the WWV signal with enough accuracy and precision to be useful for the project.  With the present configuration using the Leo Bodnar GPSDO, the RasPi system running a modified version of the FLDIGI program (Ver 4.1.13) and has no idea what the GPSDO frequency is set to.  For this reason the sequence of a frequency change has to be followed correctly or the header info (and subsequently all the final file names) will be incorrect.  
+
+The frequency change should be done at 00:00 UTC (or as close as practical).  If you miss it and the change is done after the next day's data collection has started, it will add an extra step of deleting the just started data collection file.
+
+The following procedure for changing frequent of the monitored signal is as follows:
+
+Frequency Change Procedure:
+
+1 - Just before the UTC day ends (i.e. just before 23:59:59) in FLDIFGI change the "op mode" pull down menu to the "NULL" operation.   This stops the data collection.
+
+Remember there are 86,400 samples taken per day, so loosing 10 or 20 samples will go unnoticed.  If you miss this and the new days data collection starts, open a terminal window and go to /home/pi/PSWS/Srawdata/ (type 'cd PSWS/Srawdata' [without quotes]) and then type 'rm analysisYYMMDD.csv' where YYMMDD is the new UTC date (shown on the lower right corner of the system toolbar) to remove the newly started file.
+
+2 - Set the new LB GPSDO frequency in a terminal window with the cmd sf#### where the #### is the desired frequency in KHz. Remember that for monitoring any given beacon, you set the frequency to 1KHz below the beacon frequency.  You also need to set the hardware input filter select jumper to the correct position on the Grape Gen 1 radio board.
+
+The following table shows the correct command and jumper position for a given beacon frequency Grape Gen 1 can monitor.
+
+Beacon Freq       Command        JMPR Position
+
+2.500 MHz         sf2499         2.5 MHz
+3.330 MHz         sf3329         2.5 MHz
+5.000 MHz         sf4999         5.0 MHz
+7.850 MHz         sf7849         10 MHz
+10.000 MHz        sf9999         10 MHz
+
+3 - Change the displayed frequency in FLDIGI by LMB [Left Mouse Button] clicking on the top of digit to increase it or the bottom to decrease it.  This should be set to the LB GPSDO frequency (i.e. 1 KHz below the beacon frequency).
+
+4 - Be sure the waterfall frequency monitoring indicator is set to 1000 Hz exactly.  The resulting detected frequency will be the exact beacon frequency (ignore doppler shits).
+
+5 - In FLDIGI, change the op mode to 'Freq Analysis'.  This starts up the data collection again and after seeing 'Creating Analysis File' on the lower status line in FLDIGI, you should then see the time displayed as Zulu time, the detected frequency and 'Writing File: analysisYYMMDD.csv' where YYMMDD is the UTC date.
+
+You are now monitoring the new beacon frequency.
