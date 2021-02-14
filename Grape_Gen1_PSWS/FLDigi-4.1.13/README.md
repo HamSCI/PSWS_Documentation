@@ -9,5 +9,6 @@
 - Used a modified version of FLDIGI-4.1.13 for data collection 
 - Used custom pythion scripts for data handling
 - Directory structure based off of home path /home/pi/PSWS/
-- Subdirectories include /Srawdata, /Sdata, /Sinfo, /Sstat, /Scode, /Splot, /Scmd. /Stemp  
-
+- Subdirectories include /Srawdata, /Sdata, /Sinfo, /Sstat, /Scode, /Splot, /Scmd. /Stemp
+- Use apon or apoff (in a terminal window) to turn autoplot on of off
+- Use xferon or xferoff (in a terminal window) to use the file auto transfer support
