@@ -1,0 +1,48 @@
+Partlist exported from /Users/n8obj/Eagle/work/WWV_Radio_V1_11/WWV_Radio_V1_11.sch at 4/17/19 2:11 PM
+
+Part Value        Device       Package      Description                                                             
+ANT               SMAEDGEPCB   SMAEDGEPCB                                                                           
+C1   270pF        C0805        C0805                                                                                
+C2   2200pF       C0805        C0805                                                                                
+C3   0.01uF       C0805        C0805                                                                                
+C4   0.01uF       C0805        C0805                                                                                
+C5   0.1uF        C0805        C0805                                                                                
+C6   0.01uF       C0805        C0805                                                                                
+C7   0.033uF      C0805        C0805                                                                                
+C8   0.1uF        C0805        C0805                                                                                
+C9   0.1uF        C0805        C0805                                                                                
+C10  470pF        C0805        C0805                                                                                
+C11  1uF          C0805        C0805                                                                                
+C12  0.1uF        C0805        C0805                                                                                
+C13  10uF         C0805        C0805                                                                                
+C14  10uF         C0805        C0805                                                                                
+C15  1000pF       C0805        C0805                                                                                
+C16  10uF         C0805        C0805                                                                                
+C17  0.1uF        C0805        C0805                                                                                
+C18  0.1uF        C0805        C0805                                                                                
+C19  10uF         C0805        C0805                                                                                
+D1   ESD7L5       ESD7L        ESD7L                                                                                
+D2   1N4000       1N4000_PTH   1N4000_PTH                                                                           
+FREQ 2X3PINHEADER 2X3PINHEADER 2X3PINHEADER                                                                         
+IC1  SA612A       SA612A       SO08         SA612A is a low-power VHF monolithic double-balanced mixer with on-board
+IC3  LT1761-5     LT1761-X     TSOT-23      LT1761-X Fixed V LDO                                                    
+L1   1uH          L1206        R1206                                                                                
+L2   100nH        L1206        R1206                                                                                
+L3   3.9uH        L1206        R1206                                                                                
+L4   1uH          L1206        R1206                                                                                
+L5   15uH         L1206        R1206                                                                                
+LO                SMAEDGEPCB   SMAEDGEPCB                                                                           
+PWR  Blue         LED0805      LED0805                                                                              
+R1   1K           R0805        R0805                                                                                
+R2   402          R0805        R0805                                                                                
+R3   49.9         R0805        R0805                                                                                
+R4   10K          R0805        R0805                                                                                
+R5   10K          R0805        R0805                                                                                
+R6   121K         R0805        R0805                                                                                
+R7   240K         R0805        R0805                                                                                
+R8   240K         R0805        R0805                                                                                
+R9   1K           R0805        R0805                                                                                
+R10  1K           R0805        R0805                                                                                
+U1   LT6202CS5    LT6202CS5    SOT23_5      LT6202CS5 O/A SOT23_5                                                   
+VIN  2PINBERG     2PINBERG     2PINBERG                                                                             
+VOUT 2PINBERG     2PINBERG     2PINBERG                                                                             
