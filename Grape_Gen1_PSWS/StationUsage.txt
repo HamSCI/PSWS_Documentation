@@ -1,0 +1,19 @@
+﻿What to do when you want to use your station for your own normal operation
+
+
+1 - Log into the PSWSGrape1 station via the VNC server
+
+2 - In the FLDigi drop-down menu Op Mode, select the "NULL" mode of operation.  Be sure to leave FLDigi running.
+
+
+At this point the Grape1 PSWS is not collecting data so you can disconnect the antenna and use your station as you normally do.
+
+
+
+
+When you are finished using your station:
+
+1 - Reconnect the antenna to the Grape1 PSWS.  You should see the waterfall change to show a received signal appropriate to the time of day for your area.
+
+2 - In the FLDigi drop-down menu Op Mode, select the "Freq Analysis" mode of operation. This will restart the data collection process and continue on from when you just restarted it.  The existing file for the current days data will still be used (just with a gap in time where you shut off the data collection) or if a new UTC day has started it will create a new UTC days data file and start from the time it just started.
+

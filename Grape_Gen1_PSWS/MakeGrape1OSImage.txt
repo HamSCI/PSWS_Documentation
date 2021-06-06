@@ -1,0 +1,131 @@
+How to make the Grape Gen 1 OS Image and install / use it
+
+1 - Download the OS image file from the HAMSCI Google Drive: 
+
+https://drive.google.com/open?id=1YE5UjQknnhuRUq4Y86czhxbIwzUWbgbn&authuser=frissell%40vt.edu&usp=drive_fs
+
+If you have high speed internet download, get the full uncompressed image
+
+Grape1_OS_Gen1.img (12.2GB) 
+
+or if not,  the compressed image 
+
+Grape1_OS_Gen1.img.zip (6GB)
+
+also get the hash file so you can verify the integrity of the image:
+
+Grape1_OSGen1.hash.txt
+
+2 - Verify the downloaded image using the SHA256 checksum (under MintLinux 20.1 -> "gtkhash", MACOS -> "shasum -a 256 Grape1_OS_Gen1.img")
+and make sure the sha256 numbers match
+
+If you downloaded the compressed image, unzip it and verify the uncompressed image just as before using the uncompressed sha256 checksum number.
+
+3 - Get the program BalenaEtcher and install it on your computer:
+
+https://balenaetcher.eu/
+
+4 - Obtain at least a 32 or 64 GB uUSD flash drive and insert into appropriate USB adapter into your computers USB port
+for uSD flash cards, I recommend: 
+
+32G:   Samsung PRO Endurance 32GB 100MB/s (U1)
+https://www.amazon.com/gp/product/B07B98GXQT/ref=ppx_yo_dt_b_asin_title_o03_s00?ie=UTF8&psc=1
+
+64G:   Samsung PRO Endurance 64GB 100MB/s (U1)
+https://www.amazon.com/gp/product/B07B9KTLJZ/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&psc=1
+
+I have found the cheapo flash drives (like the Red/White & Gray/White SanDisk, etc) die like flies with the constant writing to them.  YOU HAVE BEEN WARNED!
+
+5 - Start up Balena Etcher and point to the Grape1_OS_Gen1.img file and then to the 32GB (or 64GB) flash drive and start the write process.
+It will completely write and verify the image to the drive.
+
+6 - When done, remove the uSD card from the computer, then from the USB holder and insert it into the uSD socket on the RasPi4B that will become the Grape PSWS.
+
+7 - Attach a HDMI monitor (that can do 1920 x 1080) to the uHDMI port right next to the power port on the RasPi (facing the side of the RasPi, it's the 2nd connector from the left side).  Also attach a mouse/Keyboard to the RasPi USB connectors.
+
+8 - Turn on the monitor (make sure it has the HDMI port selected as input) and then turn on the Raspi.
+
+9 - As soon as the screen comes up after it boots, CLOSE FLDIGI IMMEDIATELY!!!  Failure to do this may lock up FLDigi if it tries to access the Sound Card that's not plugged in yet.
+
+10 - <LMB> Click on the terminal ICON in the lower left of task bar -it's the black box with a ">_" in it (hover the mouse pointer over it and it will say Terminal)
+     hint <LMB> is Left Mouse Button
+
+11 - type   rpc   then <enter>  Hint -- DO NOT use the GUI version of the RasPi config utililty as it does not show the option I need!
+
+12 - arrow down to    6 Advanced Options   then hit <enter>
+
+13 - You will be on    A1 Expand Filesystem    now hit <enter>
+
+14 - it will expand the filesystem to the full size of the uSD card and then come back saying Root partition has been resized.  <OK> will be highlighted  hit <enter>
+
+15 - hit <Tab> twice so you highlight <Finish>  now hit <enter>
+
+16 - It will ask you to reboot now and <Yes> will be highlighted.    hit <enter>  The system will reboot
+
+17 - Again, once the system reboots close the FLDigi application immediately - we're not ready for it yet.
+
+18 - The grape is designed to be run headless (i.e no keyboard/mouse or Display), so now you need to decide how it connects to the internet. Having a mouse / Kybd will mess up communications with the LB GPSDO so scripts will have to be re-written to accomodate this.  An advanced topic not covered in this document.
+
+If it will be wired, connect it to the ethernet cable now.
+If wireless, <LMB> on the icon just to the right of the Bluetooth icon and turn on WiFi.  Choose the wireless hub and provide the password and once it logs it you will see the signal strength in the 3 upward going semi-circles 
+Hovering over the wireless icon will also show you your assinged IP address.
+
+19 - Once connected, the NTP daemon will set the system time and lock into an external NTP server.  You can check this status in the terminal window by typing ntps
+
+20 - In a terminal window, type   ns   <enter>     this gives network status
+There are 2 numbers we're after
+  1 - Gateway Address (always ends in .1 or .254 [4th number])
+  2 - Inet address (first 3 numbers are same as gateway address)
+
+21 - In order to keep the lease on the IP address alive with the router we have to show activity within the timeout window on the router. This can be from 6000 sec and up.  So I have a crontab job ping the router once a hour to keep the lease active
+to do this, we need to put the gateway (router) address into the crontab job correctly.
+In the terminal window remember the Gateway Address. 
+now type     sudo crontab -u root -e     then hit <enter>
+
+22 - arrow down to the last line (MOUSE DOES NOT WORK IN THIS EDITOR!) and then arrow over to the beginning of the 170.85.170.254 number
+
+23 - Using the <DEL> key delete the first 170.85.170 numbers and then type in your gateway numbers so you have 4 numbers seperated by 3 "." like 192.168.100.254
+
+24 - Now hold down the <ctrl> key and press the letter o key (denoted as <ctrl-o>)   let go and now hit <enter>  That just saved the file
+
+25 - Now do a <ctrl-x> to exit the editor (hold down the <ctrl> key and press the letter x).  This should bring you back to the command prompt in the terminal window
+
+26 - Now from the ns info screen,  we need to get the Inet address (either from the eth0: info block for wired or the from the wlan0: block for wireless). Note that the first 3 numbers of this address will be the same as in the Gateway address.  THe 4th number will be between 2 and 253 inclusive.
+
+27 - With this address handy, type the following in the terminal window:   sudo nano /etc/hosts   then hit <enter>
+
+28 - arrow down to the last line (again the mouse does not work in this editor) and replace the 170.85.170.106 number that you just got from step 26 (something like 192.168.100.123)
+
+29 - Once the 4 numbers seperated by "."'s is completed, do the <ctrl-o> and then <enter>, then do <ctrl-x> This will exit the editor and return you to the command prompt.
+
+30 - Download and install the VNC viewer from  https://www.realvnc.com/en/connect/download/viewer/
+
+31 - Run the program and in the center of the VNC window <RMB> and in the appearing menu select NEW CONNECTION
+
+32 - Enter the Inet address (from step 26) into the VNC SERVER IP address window.  For the Name enter PSWSGrape1.    Then <LMB> the <OK> button
+
+33 - Double <LMB> click the new icon that you just created and a window will pop up asking to continue with the identity check as it's a new connection it doesn't know about.  Click on continur
+
+34 - Enter username as   pi    password as    pi    click the box to remember the password and then click <ok>
+
+35 - A window will now pop up that is the full display screen to the PSWSGrape1 Station!  Congrats! You should notice that the VNC logo On the RasPi has a dark gray background indication that a VNC session is active.  It is white when not active.
+
+36 - We are now ready to start setting up the final station configuration, so in the VNC session at the top center of the window there will be a white line that whne yo put the mouse pointer there will cause a drop down menue to appear. Do this and click on the   X  at the right end of the box.  Answer YES to exit the VNC session.  Sometimes the Graphics doesn't show the drop-down box the first time, so just use the normal x (close window) in the OS frame of the VNC viewer.
+
+37 - Now on teh keyboard that is tied to the PSWSGrape1, in the terminal window type   sd  then hit <enter>    This will shut the system down.
+
+38 - When the green LED (Next to the RED PWR LED on the RasPi4B) stops blinking and goes out, shut the power off to the RasPi4B
+
+39 - Remove the Monitor, Keyboard and mouse from the RasPi4B
+
+40 - Install the USB Sound adapter (in the upper UBS3 [blue] slot), and the LB GPSDO control cable in the lower left USB slot
+
+41 - Leave FLDigi running this time - we now have to set up the GPSDO for the beacon frequency you want to monitor.
+
+42 - Choose a beacon frequency you want to monitor:  WWV   2.5MHz, 5.0 MHz 10.0MHz    FLDigi is currently set to monitor WWV 5.0 MHz
+
+43 - Open a terminal window.    type   lbs   then   hit  <enter>
+
+44 - 
+
+

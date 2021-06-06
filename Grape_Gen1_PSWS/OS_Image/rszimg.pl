@@ -1,15 +1,43 @@
 #!/usr/bin/perl
-# N8OBJ 2-13-2021
-# resize Raspian OS image of SD card 
+# N8OBJ 4-7-2021
+#
+# resize Raspian OS image of SD card (mine was a 32GB uSD card)
 #
 # this raw image is obtained from linux cmd
-#      sudo dd bs=512 if=/dev/sdc /of=Grape1_OS_Gen1.img
+#   sudo dd bs=512 if=/dev/sdb of=Grape1_OS_Gen1.img
 #
-#   where /dev/sdc is the mounted uSD card (NO # following /dev/sdc - you want the whole card image)
-#      [on an IMAC, it would /dev/disk# - mine was /dev/disk4]
+#   where /dev/sdb is the mounted uSD card (NO # following /dev/sdb - you want the whole card image)
+#
+# My results:
+# $ sudo dd bs=512 if=/dev/sdb of=Grape1_OS_Gen1.img
+#   62521344+0 records in
+#   62521344+0 records out
+#   32010928128 bytes (32 GB, 30 GiB) copied, 339.402 s, 94.3 MB/s
+#
+# resulting file:
+#   -rw-r--r-- 1 root  root  32010928128 Apr  7 00:31 Grape1_OS_Gen1.img
+#
+#
 # cmd to shrink the original image file is [you need full path to the file which will be overwritten] 
-#      sudo ./rsimage.pl ~/OSimage/Grape1_OS_Gen1.img
-
+#
+#   sudo perl ~/RasPi/OSimage/rszimg.pl ~/RasPi/OSimage/Grape1_OS_Gen1.img
+#
+# My Results:
+#  $ sudo perl ~/RasPi/OSimage/rszimg.pl ~/RasPi/OSimage/Grape1_OS_Gen1.img
+#
+#    Grape1_OS_Gen1.img:
+#    ===================
+#    Old size - 30527 MB (29.81 GB)
+#    New size - 11663 MB (11.39 GB)
+#    Image file was reduced by 18864 MB (18.42 GB)
+#
+# resulting new file size:
+#   -rw-r--r-- 1 root  root  12230557697 Apr  7 00:32 Grape1_OS_Gen1.img
+#
+#  After .zip compression file size is:
+#
+#   -rw-rw-r-- 1 n8obj n8obj  5955515111 Apr  7 00:59 Grape1_OS_Gen1.img.zip
+#
 use utf8;
 use 5.010;
 use strict;

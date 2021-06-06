@@ -1,0 +1,14 @@
+using GtkHash Ver 1.2
+
+for uncompressed image:  Grape1_OS_Gen1.img
+
+MD5: 60bffd4e295786ce9e6e9ffcbffebfef
+sha256:  a8f8f317648caf74eb02fe727033c407241377cc7c3471d196b435cb49495ef7
+
+
+for compressed image:   Grape1_OS_Gen1.img.zip
+
+MD5: b556ce8146719680b4b81fff46cddf7c
+sha256:  50f2a78d51e218824ca102e8800797fe35ddf92f0d4fa47af69334c09e80c58d
+
+
