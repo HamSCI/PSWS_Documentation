@@ -1,7 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-export EDITOR=/usr/bin/nano
+export EDITOR=/bin/nano
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -121,6 +121,7 @@ alias duh='du -d 1'
 alias p='ps -ax'
 alias su='sudo -i'
 alias ut='users;date;uptime'
+alias bt='cat /home/pi/clksync.log'
 alias ntps='ntpstat; echo "NTP PPM Drift is"; cat /var/log/ntpstats/ntp.drift'
 alias rpas='cd /home/pi/.config/lxsession/LXDE-pi'
 alias fld='cd /home/pi/fldigi/fldigi-4.1.13/src/wwv'
