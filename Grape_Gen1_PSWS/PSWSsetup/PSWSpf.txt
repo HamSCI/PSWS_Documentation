@@ -1,0 +1,60 @@
+How to use Personal Space Weather Station Process File (PSWSpf) update utility
+JC Gibbons / N8OBJ      Feb 11,2022
+
+Scope:  THis utility program is intended to take the raw .csv day's data file 
+and repopulate the header info only from all the current info in directory
+/home/pi/PSWS/Sinfo/. The only info recovered from the original hgeader file is the 
+full date timestamp and the Band being monitored.  Everything else comes from the 
+/Sinfo directory.
+
+NOTE: This program is a serious memory user and in the creation of plots the plotting routine
+does not release the memory it used to create the plot(s) until the program exits.  For this reason,
+You SHOULD NOT BE RUNNING FLDIGI  when running this program.  Doing so will lock
+Up the system and force you to do a hard reboot (I.e. cycle power - - - voice of experience).
+You also may want to do it in smaller blocks of files to keep from using up all available memory
+In the system.
+
+1 - Get the new version of PSWSpf.py from the repo and install it in the
+/home/pi/PSWS/Scode/  directory.  This should overwrite the outdated and
+not quite functional version that was there.  
+New file length should be 31,081 bytes.
+
+2 - Check to see if the alias works:
+
+alias PSWSpf
+
+you should see:
+alias PSWSpf='python3 /home/pi/PSWS/Scode/PSWSpf.py'
+
+3 - cd /home/pi/PSWS/Srawdata
+
+4- ls -1 > todo
+
+This lists in a one filename per line format all the files in this directory
+
+5 - nano todo
+
+In the nano editor use <ctrl-k> to delete the lines (where the cursor is) that 
+you do not want converted.  You should end up with a list of files that you
+want converted and nothing else. Use arrow keys to navigate to unwanted lines.
+When done, type <ctrl-s> then <ctrl-x>
+
+6 - xferon
+
+This will copy the finished/updated files to the xfer directory as well.
+
+7 - PSWSpf
+
+This kicks off the conversion program.  It will tell you what its doing on 
+each file as it's processed.
+
+And yes, FLDIGI misses ~2000+ timestamps a day (averages one every 90 seconds)
+This is a know flaw in the FLDIGI program that will not exist in Gen 2 of the
+Grape2 firmware.
+
+Original .csv files are renamed to *.orig so the original is not destroyed.
+
+You're done!
+
+John N8OBJ  10/17/2021
+

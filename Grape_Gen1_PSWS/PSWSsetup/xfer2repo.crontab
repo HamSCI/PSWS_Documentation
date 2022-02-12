@@ -1,0 +1,1 @@
+42 00 * * * /home/pi/PSWS/Scode/xfer2repo.sh >/home/pi/PSWS/Sstat/xferstat 2>&1
