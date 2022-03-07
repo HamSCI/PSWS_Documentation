@@ -6,7 +6,7 @@ awk '{print "/home/pi/PSWS/Sxfer/" $0}' /home/pi/PSWS/Stemp/sflist > /home/pi/PS
 echo 'Files to send to Repo:'
 cat /home/pi/PSWS/Stemp/go2repo
 echo 'Attempting xfer to repo...'
-if (< /home/pi/PSWS/Stemp/go2repo xargs -I %  curl -u "grape@wwvarc.net:5F3gjdEKEt" -T "{%}" ftp://208.109.41.230/);
+if (< /home/pi/PSWS/Stemp/go2repo xargs -I %  curl -u "grape@wwvarc.org:5F3gjdEKEt" -T "{%}" ftp://208.109.41.230/);
 then
     echo 'Files transferred ok - removing them from ~/Sxfer/'; rm /home/pi/PSWS/Sxfer/*;
 else
