@@ -14,4 +14,5 @@ documentation for details.
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
+   
+   wsprdaemon_rx888_install_notes
