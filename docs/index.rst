@@ -15,4 +15,4 @@ documentation for details.
    :maxdepth: 2
    :caption: Contents:
 
-   wspr_install.md
+   wspr_install

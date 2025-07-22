@@ -1,8 +1,11 @@
-# RX888 + WSPRdaemon Setup
+===========================
+RX888 + WSPRdaemon Setup
+===========================
 
 This guide explains how to configure WSPRdaemon with the RX888 receiver.
 
-## Steps
+Steps
+-----
 
 1. Plug in the receiver.
 2. Start the daemon.
