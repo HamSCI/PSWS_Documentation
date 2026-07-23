@@ -1,0 +1,2 @@
+# What is the Ground Magnetometer?
+The Ground Magnetometer is a low-cost, science grade magnetometer equipped with a sensor able to measure magnetic fields with a resolution of ~3 nT at 1 Hz. This resolution enables the magnetometer to detect both space-borne and ground geomagnetic activity, ranging from solar flares to geomagnetic storms. The instrument consists of a magnetic sensor (a RM3100, manufactured by PNI Corporation), which communicates with a Raspberry Pi-based computer system; the system is operational once the necessary software is installed. 

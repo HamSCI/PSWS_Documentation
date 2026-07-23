@@ -6,13 +6,26 @@
 HamSCI PSWS documentation
 =========================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
-
+Documentation for the HamSCI Personal Space Weather Station (PSWS) project.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Overview:
 
-   wspr_install
+   Project Overview <home>
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Instruments:
+
+   HF PSWS Receiver <hf_psws_receiver>
+   Ground Magnetometer <ground_magnetometer>
+   WSPRSonde <wsprsonde>
+   Whistler Catcher VLF Reception System <whistler_catcher_vlf>
+   Antennas <antennas>
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Software:
+
+   WSPR Installation <wspr_install>
